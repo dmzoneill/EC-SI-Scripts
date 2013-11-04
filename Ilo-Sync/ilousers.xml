@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+  <RIBCL VERSION="2.0">
+    <LOGIN USER_LOGIN="[ilouser]" PASSWORD="[ilopass]">
+	  
+	  <USER_INFO MODE="write">
+		<MOD_USER USER_LOGIN="vendor">
+  		  <USER_NAME value="vendor"/>
+		  <USER_LOGIN value="vendor"/>
+		  <ADMIN_PRIV value="No"/>
+		  <REMOTE_CONS_PRIV value="Yes"/>
+		  <RESET_SERVER_PRIV value="Yes"/>
+		  <VIRTUAL_MEDIA_PRIV value="Yes"/>
+		  <CONFIG_ILO_PRIV value="No"/>            
+		</MOD_USER>
+		
+		<MOD_USER USER_LOGIN="logistics">
+  		  <USER_NAME value="logistics"/>
+		  <USER_LOGIN value="logistics"/>
+		  <ADMIN_PRIV value="Yes"/>
+		  <REMOTE_CONS_PRIV value="Yes"/>
+		  <RESET_SERVER_PRIV value="Yes"/>
+		  <VIRTUAL_MEDIA_PRIV value="Yes"/>
+		  <CONFIG_ILO_PRIV value="No"/>            
+		</MOD_USER>
+		
+		<MOD_USER USER_LOGIN="remadm">
+  		  <USER_NAME value="remadm"/>
+		  <USER_LOGIN value="Yes"/>
+		  <ADMIN_PRIV value="Yes"/>
+		  <REMOTE_CONS_PRIV value="Yes"/>
+		  <RESET_SERVER_PRIV value="Yes"/>
+		  <VIRTUAL_MEDIA_PRIV value="Yes"/>
+		  <CONFIG_ILO_PRIV value="Yes"/>            
+		</MOD_USER>
+		
+		<MOD_USER USER_LOGIN="admin">
+  		  <USER_NAME value="admin"/>
+		  <USER_LOGIN value="Yes"/>
+		  <ADMIN_PRIV value="Yes"/>
+		  <REMOTE_CONS_PRIV value="Yes"/>
+		  <RESET_SERVER_PRIV value="Yes"/>
+		  <VIRTUAL_MEDIA_PRIV value="Yes"/>
+		  <CONFIG_ILO_PRIV value="Yes"/>            
+		</MOD_USER>
+      </USER_INFO>
+	  
+    </LOGIN>
+  </RIBCL>

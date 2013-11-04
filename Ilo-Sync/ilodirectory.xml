@@ -1,0 +1,51 @@
+<?xml version="1.0" ?>
+  <RIBCL VERSION="2.0">
+    <LOGIN USER_LOGIN="[ilouser]" PASSWORD="[ilopass]">
+      <DIR_INFO MODE="write">
+        <MOD_DIR_CONFIG>
+   		  <DIR_AUTHENTICATION_ENABLED VALUE="Y"/>                                
+		  <DIR_LOCAL_USER_ACCT VALUE="Y"/>                                       
+		  <DIR_SERVER_ADDRESS VALUE= "ger.corp.intel.com"/>                      
+		  <DIR_SERVER_PORT VALUE= "636"/>
+		  <DIR_OBJECT_DN VALUE= "CN=[host],OU=Servers,OU=SIE,OU=Customer Labs,OU=Engineering Computing,OU=Resources,DC=ger,DC=corp,DC=intel,DC=com"/>
+		  <DIR_USER_CONTEXT_1 VALUE= "CN=AD_Admin Account,OU=Rialto,OU=Application Managed,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+		  <DIR_USER_CONTEXT_2 VALUE= "CN=ESX Admins,OU=Managed,OU=Groups,OU=Engineering Computing,OU=Resources,DC=ger,DC=corp,DC=intel,DC=com"/>
+          <DIR_USER_CONTEXT_3 VALUE= "CN=EC AMR ILAB OPS,OU=Delegated,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+          <DIR_USER_CONTEXT_4 VALUE= "CN=EC GER iLab Ops,OU=Delegated,OU=Groups,OU=Engineering Computing,OU=Resources,DC=ger,DC=corp,DC=intel,DC=com"/>
+          <DIR_USER_CONTEXT_5 VALUE= "CN=ad_ec ger euec lab ops,OU=Managed,OU=Groups,DC=ger,DC=corp,DC=intel,DC=com"/>
+          <DIR_USER_CONTEXT_6 VALUE= ""/>
+		  <DIR_USER_CONTEXT_7 VALUE= ""/>
+		  <DIR_USER_CONTEXT_8 VALUE= ""/>
+		  <DIR_USER_CONTEXT_9 VALUE= ""/>
+		  <DIR_USER_CONTEXT_10 VALUE= ""/>
+		  <DIR_USER_CONTEXT_11 VALUE= ""/>
+		  <DIR_USER_CONTEXT_12 VALUE= ""/>
+		  <DIR_USER_CONTEXT_13 VALUE= ""/>
+		  <DIR_USER_CONTEXT_14 VALUE= ""/>
+		  <DIR_USER_CONTEXT_15 VALUE= ""/>
+		  <DIR_ENABLE_GRP_ACCT VALUE= "Y"/>
+		  <DIR_GRPACCT1_NAME VALUE= "CN=SPNet_Global Admin,OU=Rialto,OU=Application Managed,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+		  <DIR_GRPACCT1_PRIV VALUE= "1,2,3,4,5,6"/>
+		  <DIR_GRPACCT1_SID VALUE= ""/>
+		  <DIR_GRPACCT2_NAME VALUE= "CN=SPNet_Global ReadOnly,OU=Rialto,OU=Application Managed,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+		  <DIR_GRPACCT2_PRIV VALUE= "2,6"/>
+		  <DIR_GRPACCT2_SID VALUE= "S-1-5-11"/>
+		  <DIR_GRPACCT3_NAME VALUE= "CN=SPNet_ibw Admin,OU=Rialto,OU=Application Managed,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+		  <DIR_GRPACCT3_PRIV VALUE= "1,2,3,4,5,6"/>
+		  <DIR_GRPACCT3_SID VALUE= ""/>
+		  <DIR_GRPACCT4_NAME VALUE= "CN=SPNet_ibw Tech,OU=Rialto,OU=Application Managed,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+		  <DIR_GRPACCT4_PRIV VALUE= "2,3,4,6"/>
+		  <DIR_GRPACCT4_SID VALUE= ""/>
+          <DIR_GRPACCT5_NAME VALUE= "CN=EC GER iLab Ops,OU=Delegated,OU=Groups,OU=Engineering Computing,OU=Resources,DC=ger,DC=corp,DC=intel,DC=com"/>
+          <DIR_GRPACCT5_PRIV VALUE= "1,2,3,4,5,6"/>
+          <DIR_GRPACCT6_NAME VALUE= "CN=EC AMR ILAB OPS,OU=Delegated,OU=Groups,DC=amr,DC=corp,DC=intel,DC=com"/>
+          <DIR_GRPACCT6_PRIV VALUE= "1,2,3,4,5,6"/>
+          <DIR_GRPACCT5_SID VALUE= ""/>
+		  <DIR_KERBEROS_ENABLED VALUE="N"/>
+		  <DIR_KERBEROS_REALM VALUE=""/>
+		  <DIR_KERBEROS_KDC_ADDRESS VALUE= ""/>
+		  <DIR_KERBEROS_KDC_PORT VALUE= "88"/>
+        </MOD_DIR_CONFIG>
+      </DIR_INFO>  
+    </LOGIN>
+  </RIBCL>

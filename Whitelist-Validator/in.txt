@@ -1,0 +1,21 @@
+irvapp015.ir.intel.com, git-ger-3.devtools.intel.com, git-amr-1.devtools.intel.com, git-amr-2.devtools.intel.com, git-gar-1.devtools.intel.com, git-ccr-1.devtools.intel.com|tcp:29418, tcp:80, tcp:443
+sivcqweb001.ger.corp.intel.com, sivcqweb002.ger.corp.intel.com, sisql.clearquest.intel.com, siscqsql003.ger.corp.intel.com, jfsql.clearquest.intel.com,  orcqsweb001.amr.corp.intel.com|tcp:80, tcp:3180,  tcp:443
+sissql006.ir.intel.com, vmspaccl002.ger.corp.intel.com, vmspdccl002.ger.corp.intel.com|tcp:8080, tcp:80
+sharepoint.ger.ith.intel.com|tcp:80, tcp:443
+Klocwork.ir.intel.com, sisloginsw.ir.intel.com|tcp:8070
+ifcollaborate.intel.com, f5-ifcollaborate-prod.cps.intel.com|tcp:80, tcp:443
+Rtc.intel.com, vmspartc010.fm.intel.com|tcp:80, tcp:443
+fm1eamweb.cps.intel.com|tcp:80
+ch7sapp499.ch.intel.com, iem.intel.com, iem.ch.intel.com|tcp:80
+ch7cwww400-nlb.ch.intel.com, iem2.intel.com|tcp:80
+autoproxy.ir.intel.com, IRSNETUT101.ger.corp.intel.com, CHSNETUT101.gar.corp.intel.com, SHSNETUT101.ccr.corp.intel.com, CRSNETUT101.amr.corp.intel.com, HASNETUT101.ger.corp.intel.com, FMSNETUT101.amr.corp.intel.com, FMSNETUT102.amr.corp.intel.com, FMSNETUT103.amr.corp.intel.com, SCSNETUT101.amr.corp.intel.com, JFSNETUT102.amr.corp.intle.com, JFSNETUT101.amr.corp.intel.com, JFSNETUT103.amr.corp.intel.com, CDSNETUT101.ccr.corp.intel.com, MSSNETUT101.ccr.corp.intel.com, AZSNETUT101.amr.corp.intel.com|tcp:9090
+wpad.ir.intel.com, wpad.ger.corp.intel.com|tcp:80
+nis-host.ir.intel.com|tcp:721
+linuxset-repository.ir.intel.com|tcp:80
+irvcfg001.ir.intel.com|tcp:5108
+tac.intel.com, it.intel.com, servicedesk.intel.com|tcp:80
+irscnbhub001.ger.corp.intel.com, irscnbhub002.ger.corp.intel.com, irscnbhub003.ger.corp.intel.com, irscnbhub004.ger.corp.intel.com|tcp:16384
+iss.iglb.intel.com, Sisisslan01.ger.corp.intel.com|tcp:80, 137, udp:138, 139
+fmstoolan001.fm.intel.com, toolan.intel.com|80
+ntp-host1.ir.intel.com, ntp-host2.ir.intel.com, ntp-host3.ir.intel.com|udp:123
+ger.corp.intel.com|389, tcp:636, tcp:3268, tcp:3269, 88, 53, 445, tcp:25, tcp:135, 5722, udp:123, 464, udp:138, 9389, udp:67, 2535, udp:137, 139

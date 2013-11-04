@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Men and Mice Report</title>
+	<style type="text/css">
+
+	body
+	{
+			font-family: Tahoma;
+			font-size: 12px;
+			color: #544E4F;
+	}
+	
+	h1
+	{
+			font-size: 16px;
+			color: #0661AA;
+	}
+	
+	.main
+	{
+		margin:10px;
+		border: 0px;
+	}
+	
+	th, strong
+	{
+		color: #0661AA;
+		font-weight:bold;
+	}
+	
+	.cell, th, td
+	{
+		padding-left:5px;
+		padding-right:5px;
+		text-align:left;
+	}
+	
+	.badrec
+	{
+		color:#aa0000;
+	}
+	
+	.goodrec
+	{
+		color:#006600;
+	}
+
+	</style>
+</head>
+
+<body>
+
+<table width='750'>
+	<tr>
+		<td width='180' style='padding:0;margin:0;'><img src='cid:intel-small.jpg' style='padding:0;margin:0;'></td>
+		<td width='570'>
+			<h1 style='padding-top:5px'>Men & Mice R_SUBNET Vlan Report</h1>
+			<p>Dns records for the <strong>R_SUBNET</strong> vlan, cross referenced with KCDB / Nodes. <br/><br>
+			<strong>R_LOCATION</strong> and was executed by <strong>R_USER</strong>.</p>
+		</td>
+	</tr>
+	<tr>
+		<td colspan='2'>
+			<table class="main" width="730">
+				<tr>
+					<td>
+						<center>
+							<table width='700'>						
+								<tr><td colspan='6'><strong class='badrec'>Invalid Records / Down hosts</strong><br><br></td></tr>
+								<tr><th width='150'>M&M ID</th><th width='200'>Record</th><th width='50'>Type</th><th width='150'>Value</th><th width='70'>Kcdb</th><th width='80'>Nodes</th></tr>
+								R_BADRECORDS
+								<tr><td colspan='6'><br><strong class='goodrec'>Valid Records / Up hosts</strong><br><br></td></tr>
+								<tr><th width='150'>M&M ID</th><th width='200'>Record</th><th width='50'>Type</th><th width='150'>Value</th><th width='70'>Kcdb</th><th width='80'>Nodes</th></tr>
+								R_GOODRECORDS
+							</table>
+						</center>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>	
+	
+</body>
+</html>

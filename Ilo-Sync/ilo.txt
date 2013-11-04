@@ -1,0 +1,7 @@
+wgcvsh001-rpm.ir.intel.com
+wgcvsh002-rpm.ir.intel.com
+wgcvsh003-rpm.ir.intel.com
+wgcvsh004-rpm.ir.intel.com
+wgcvsh005-rpm.ir.intel.com
+wgcvsh006-rpm.ir.intel.com
+

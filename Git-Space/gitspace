@@ -1,0 +1,52 @@
+#!/bin/bash
+
+WHOAMI=$(whoami)
+CIGCCUSR=$(groups | grep cigccusr | wc -l)
+
+GITSPACE="/nfs/sie/disks/git_workspace/$WHOAMI/"
+HOME="/home/$WHOAMI/."
+PHOME="/nfs/sie/public_home/$WHOAMI/."
+SYMHOME="/home/$WHOAMI/git_workspace"
+SYMPHOME="/nfs/sie/public_home/$WHOAMI/git_workspace"
+
+# member of cigccusr group
+if [ "$CIGCCUSR" -eq 1 ] 
+then
+
+    # determing whether this is already done
+    if [ -e "$GITSPACE" -o -e "$SYMHOME" -o -e "$SYMPHOME" ]
+    then
+                        
+        echo -e "\e[00;31mConflicting files and folder are already in place\e[00m"
+                                    
+    else
+                                                
+        echo -e "Creating gitspace in '\e[00;31m$GITSPACE\e[00m'"
+        mkdir $GITSPACE
+        chmod 700 $GITSPACE
+                                                                             
+        echo -e "Creating symlink '\e[00;31m$SYMHOME\e[00m'"
+        ln -s $GITSPACE $SYMHOME
+                                                                                                       
+        # do they have a lab home folder
+        if [ -e "$PHOME" ]
+        then
+                                                                                                                                           
+            echo "Found lab home ( public_home )"
+            echo -e "Creating symlink '\e[00;31m$SYMPHOME\e[00m'"
+         
+            ln -s $GITSPACE $SYMPHOME
+            
+        fi
+        
+        echo "Completed..."
+        
+    fi
+
+else
+    
+    echo "You are not a member of cigccusr"
+    echo "Please go to IEM and apply for access"
+    
+fi
+
