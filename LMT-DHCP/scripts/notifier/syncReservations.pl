@@ -8,7 +8,7 @@ use LMTCommon;
 use LMTSession;
 use LMTReservation;
 
-my $lmtcommon = new LMTCommon;
+my $lmtcommon = LMTCommon->new;
 my $session   = LMTSession::open_session($lmtcommon);
 
 sync_reservations();

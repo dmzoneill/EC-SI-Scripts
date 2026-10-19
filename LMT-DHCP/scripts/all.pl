@@ -12,7 +12,7 @@ use English;
 use LMTCommon;
 use LMTSession;
 
-my $lmtcommon = new LMTCommon;
+my $lmtcommon = LMTCommon->new;
 my $session   = LMTSession::open_session($lmtcommon);
 
 open my $log, '>', '/scripts/log/LMTall.txt';

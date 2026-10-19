@@ -29,8 +29,8 @@ use LMTSession;
 ###
 ### Ini Reader
 #########################################################################
-my $lmtcommon  = new LMTCommon;
-my $lmtemailer = new LMTEmailer;
+my $lmtcommon  = LMTCommon->new;
+my $lmtemailer = LMTEmailer->new;
 
 ###
 ### Database Setup

@@ -13,8 +13,8 @@ use LMTCommon;
 use LMTEmailer;
 use LMTSession;
 
-my $lmtcommon  = new LMTCommon;
-my $lmtemailer = new LMTEmailer;
+my $lmtcommon  = LMTCommon->new;
+my $lmtemailer = LMTEmailer->new;
 my $session    = LMTSession::open_session($lmtcommon);
 
 sub in_array {

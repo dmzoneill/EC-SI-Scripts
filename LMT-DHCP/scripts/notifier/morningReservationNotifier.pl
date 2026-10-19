@@ -16,8 +16,8 @@ use LMTEmailer;
 use LMTSession;
 use LMTReservation;
 
-my $lmtcommon  = new LMTCommon;
-my $lmtemailer = new LMTEmailer;
+my $lmtcommon  = LMTCommon->new;
+my $lmtemailer = LMTEmailer->new;
 my $baseUrl    = $lmtcommon->get( 'common', 'cqbaseurl' );
 my $session    = LMTSession::open_session($lmtcommon);
 
