@@ -1,141 +1,66 @@
-#########################################################################
-#########################################################################
-# This sub routine Syncs Active Reservations and Associated Assets
-# Get all Reservations that are Active and ensure their corresponding assets are in the Reserved State
-
-
-
-
-###
-### Includes
-#########################################################################
+# Sync active reservations with the Reserved state of their assets.
+use strict;
 
 use lib "/scripts";
 
 use CQPerlExt;
 use LMTCommon;
+use LMTSession;
+use LMTReservation;
 
+my $lmtcommon = LMTCommon->new;
+my $session   = LMTSession::open_session($lmtcommon);
 
+sync_reservations();
 
+sub sync_reservations {
+    my $reservation_query = $session->BuildQuery("Reservation");
+    $reservation_query->BuildField("ID");
+    $reservation_query->BuildField("AssetRef");
 
-###
-### Ini Reader
-#########################################################################
-my $lmtcommon = new LMTCommon;
+    my @active_filter = ('Active');
+    my $active_filter =
+      $reservation_query->BuildFilterOperator($CQPerlExt::CQ_BOOL_OP_AND);
+    $active_filter->BuildFilter( "state", $CQPerlExt::CQ_COMP_OP_EQ,
+        \@active_filter );
+    $active_filter->BuildFilter( "AssetRef", $CQPerlExt::CQ_COMP_OP_IS_NOT_NULL,
+        [""] );
 
+    my $result_set = $session->BuildResultSet($reservation_query);
+    $result_set->Execute();
+    my $status = $result_set->MoveNext();
 
+    while ( $status == 1 ) {
+        my $asset_entity =
+          $session->GetEntity( "Asset", $result_set->GetColumnValue(2) );
+        LMTReservation::reserve_unless_reserved( $session, $asset_entity );
+        $status = $result_set->MoveNext();
+    }
 
-###
-### Database Setup
-#########################################################################
+    my $asset_query = $session->BuildQuery("Asset");
+    $asset_query->BuildField("id");
+    $asset_query->BuildField("reservations");
 
-my $CQ_LOGIN = $lmtcommon->get( 'database' , 'cq_login' );
-my $CQ_PASS = $lmtcommon->get( 'database' , 'cq_pass' );
-my $CQ_DB = $lmtcommon->get( 'database' , 'cq_db' );
-my $CQ_DBSET = $lmtcommon->get( 'database' , 'cq_dbset' ); # CQ Database Set example for Shannon
+    my @reserved_filter     = ('Reserved');
+    my @reservations_filter = ('');
+    my $reserved_filter_op =
+      $asset_query->BuildFilterOperator($CQPerlExt::CQ_BOOL_OP_AND);
+    $reserved_filter_op->BuildFilter( "state", $CQPerlExt::CQ_COMP_OP_EQ,
+        \@reserved_filter );
 
-### Unicode for crap data in db
-my $cq = CQClearQuest::Build();
-my $runmode = $cq->GetPerlReturnStringMode();
-$cq->SetPerlReturnStringMode( $CQPerlExt::CQ_RETURN_STRING_UNICODE );
+    $result_set = $session->BuildResultSet($asset_query);
+    $result_set->Execute();
+    $status = $result_set->MoveNext();
 
-my $session = CQSession::Build();
-CQSession::UserLogon( $session , "$CQ_LOGIN" , "$CQ_PASS" , "$CQ_DB" , "$CQ_DBSET" );
+    while ( $status == 1 ) {
+        if ( $result_set->GetColumnValue(2) eq "" ) {
+            my $asset_entity =
+              $session->GetEntity( "Asset", $result_set->GetColumnValue(1) );
+            LMTSession::apply_action( $session, $asset_entity, "Available" );
+        }
 
+        $status = $result_set->MoveNext();
+    }
 
-
-
-
-
-syncReservations();
-
-
-
-sub syncReservations
-{
-	my $reservationQuery = $session->BuildQuery("Reservation");
-
-	$reservationQuery->BuildField("ID");
-	$reservationQuery->BuildField("AssetRef");
-
-	my @activeFilter = ('Active');
-
-	my $query_ActiveFilter = $reservationQuery->BuildFilterOperator($CQPerlExt::CQ_BOOL_OP_AND);
-	$query_ActiveFilter->BuildFilter("state", $CQPerlExt::CQ_COMP_OP_EQ,\@activeFilter);
-	$query_ActiveFilter->BuildFilter( "AssetRef" , $CQPerlExt::CQ_COMP_OP_IS_NOT_NULL , [""] );
-
-	my $resultSet = $session->BuildResultSet($reservationQuery);
-
-	$resultSet->Execute();
-
-	my $status = $resultSet->MoveNext();
-
-	while ($status == 1)
-	{
-		my $assetEntity = $session->GetEntity("Asset",$resultSet->GetColumnValue(2));
-	
-		if ($assetEntity->GetFieldValue("State")->GetValue() ne "Reserved")
-		{
-			# uh oh, the user didn't click save on asset after creating the reservation
-			printf("Asset: %s is not in reserved state when it should be\n",$assetEntity->GetFieldValue("id")->GetValue());
-
-			$session->EditEntity($assetEntity,"Reserved");
-
-			if ($assetEntity->Validate() eq "")
-			{
-				$assetEntity->Commit();
-			}
-			else
-			{
-				$assetEntity->Revert();
-			}
-		}
-
-		$status = $resultSet->MoveNext();
-	}
-
-
-	# Now sometimes reservations finish but the Asset stays in reserved state
-	my $assetQuery = $session->BuildQuery("Asset");
-
-	$assetQuery->BuildField("id");
-	$assetQuery->BuildField("reservations");
-
-	my @reservedFilter = ('Reserved');
-	my @reservationsFilter = ('');
-
-	my $query_ReservedFilter = $assetQuery->BuildFilterOperator($CQPerlExt::CQ_BOOL_OP_AND);
-
-	$query_ReservedFilter->BuildFilter("state", $CQPerlExt::CQ_COMP_OP_EQ,\@reservedFilter);
-	# $query_ReservedFilter->BuildFilter("reservations", $CQPerlExt::CQ_COMP_OP_EQ,\@reservationsFilter);
-
-	my $resultSet = $session->BuildResultSet($assetQuery);
-
-	$resultSet->Execute();
-
-	my $status = $resultSet->MoveNext();
-
-	while ($status == 1)
-	{
-		if ($resultSet->GetColumnValue(2) eq "")
-		{
-
-			my $assetEntity = $session->GetEntity("Asset",$resultSet->GetColumnValue(1));
-	
-			$session->EditEntity($assetEntity,"Available");
-
-			if ($assetEntity->Validate() eq "")
-			{
-				$assetEntity->Commit();
-			}
-			else
-			{
-				$assetEntity->Revert();
-			}
-				
-		}
-		
-		$status = $resultSet->MoveNext();
-	}
-
+    return;
 }
