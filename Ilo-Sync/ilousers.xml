@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
   <RIBCL VERSION="2.0">
-    <LOGIN USER_LOGIN="[ilouser]" PASSWORD="[ilopass]">
+    <!-- Password removed at owner request (old, non-functional). -->
+    <LOGIN USER_LOGIN="[ilouser]" PASSWORD="CHANGE_ME">
 	  
 	  <USER_INFO MODE="write">
 		<MOD_USER USER_LOGIN="vendor">
